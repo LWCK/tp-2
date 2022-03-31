@@ -6,9 +6,12 @@ import {
   Container,
   Card,
   CardGroup,
+  Image,
+  Span,
+  Row,
+  Col,
 } from "react-bootstrap";
 import "./App.css";
-import image1 from "./logo.svg";
 
 const title = "TP-2 E-Commerce";
 
@@ -20,6 +23,7 @@ function App() {
       desc: "Bois Massif",
       price: 500,
       image: "item1.png",
+      panier: false,
     },
     {
       id: 2,
@@ -27,6 +31,7 @@ function App() {
       desc: "Ha'avare bois",
       price: 200,
       image: "item2.png",
+      panier: false,
     },
     {
       id: 3,
@@ -34,6 +39,7 @@ function App() {
       desc: "Provenance des Tupuna",
       price: 1000,
       image: "item3.png",
+      panier: false,
     },
     {
       id: 4,
@@ -41,21 +47,30 @@ function App() {
       desc: "Vente à l'unité",
       price: 990,
       image: "item4.png",
+      panier: false,
     },
   ]);
 
-  console.log(products[0].name);
+  const countProducts = products.length;
 
   const productsList = products.map((item) => (
     <Card key={item.id}>
-      <Card.Img variant="top" src={item.image} alt={item.image} />
+      {/* importation img + CONCAT */}
+      <Card.Img
+        variant="top"
+        className="img-card"
+        src={"./image/" + item.image}
+        alt={item.image}
+      />
       <Card.Body>
         <Card.Title>{item.name}</Card.Title>
         <Card.Text>{item.desc}</Card.Text>
         <Button variant="primary">Ajouter au panier</Button>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">{item.price}</small>
+        <small className="text-muted mr-auto">
+          Prix : <strong>{item.price} XPF</strong>
+        </small>
       </Card.Footer>
       {/* <p>{item.id}</p>
       <p>{item.name}</p>
@@ -67,12 +82,14 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg">
         <Container>
-          <Navbar.Brand href="#home">{title}</Navbar.Brand>
+          <Navbar.Brand href="#home" className="h1">
+            {title}
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="alignR">
               <Nav.Link href="#home">Accueil</Nav.Link>
               <Nav.Link href="#link">Catalogue</Nav.Link>
               <Nav.Link href="#link">
@@ -82,18 +99,24 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>{" "}
+      </Navbar>
       <Container>
-        {" "}
-        <h2 className="py-2">Catalogue en ligne</h2>
+        <Row>
+          <Col sm={8}>
+            <h2 className="py-2">Catalogue en ligne</h2>
+          </Col>
+          <Col sm={4} className="alignR">
+            <p> Total des produits : {countProducts}</p>
+          </Col>
+        </Row>
       </Container>
       <Container>
-        <CardGroup>{productsList}</CardGroup>
+        <CardGroup className="card">{productsList}</CardGroup>
       </Container>
-      <img src={products[0].image} alt="je suis ici" />
-      <img src={image1} alt="je suis ici" />
-      {/* <img src="./static/media/item1.png" alt="je suis ici" /> */}
-      <p>{products[0].name} </p>[0].image
+      {/* <Image src='../public/item1.png' alt="je suis ici" /> */}
+      {/* <Image src={image1} alt="je suis ici" /> */}
+      {/* <Image src="./image/item1.png" alt="je suis ici" /> */}
+      {/* <p>{products[0].name} </p>[0].image */}
     </div>
   );
 }
