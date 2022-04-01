@@ -17,6 +17,7 @@
   text-align: right;
 }
 
-.h1{
-  color: blueviolet!important;
+.topTitle,.navLink{
+  /* color: blueviolet!important; */
+  text-decoration: none;
 }
