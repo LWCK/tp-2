@@ -1,4 +1,4 @@
-import { useState, setState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Nav,
@@ -10,45 +10,25 @@ import {
   Badge,
   Col,
 } from "react-bootstrap";
+import create from "zustand";
 import "./App.css";
 
 const title = "TP-2 E-Commerce";
 
 function App() {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: "Chaise",
-      desc: "Bois Massif",
-      price: 500,
-      image: "item1.png",
-      qte: 10,
-    },
-    {
-      id: 2,
-      name: "Table",
-      desc: "Ha'avare bois",
-      price: 200,
-      image: "item2.png",
-      qte: 6,
-    },
-    {
-      id: 3,
-      name: "Chocolat",
-      desc: "Provenance des Tupuna",
-      price: 1000,
-      image: "item3.png",
-      qte: 11,
-    },
-    {
-      id: 4,
-      name: "Chaussure",
-      desc: "Vente à l'unité",
-      price: 990,
-      image: "item4.png",
-      qte: 1,
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+
+  var requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+
+  useEffect(() => {
+    fetch("https://624654bee3450d61b0fd30d8.mockapi.io/productList")
+      .then((response) => response.json())
+      .then((result) => setProducts(result))
+      .catch((error) => console.log("error", error));
+  }, []);
 
   const countProducts = products.length;
 
