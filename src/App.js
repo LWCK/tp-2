@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, setState } from "react";
 import {
   Button,
   Nav,
@@ -6,9 +6,8 @@ import {
   Container,
   Card,
   CardGroup,
-  Image,
-  Span,
   Row,
+  Badge,
   Col,
 } from "react-bootstrap";
 import "./App.css";
@@ -23,7 +22,7 @@ function App() {
       desc: "Bois Massif",
       price: 500,
       image: "item1.png",
-      panier: false,
+      qte: 10,
     },
     {
       id: 2,
@@ -31,7 +30,7 @@ function App() {
       desc: "Ha'avare bois",
       price: 200,
       image: "item2.png",
-      panier: false,
+      qte: 6,
     },
     {
       id: 3,
@@ -39,7 +38,7 @@ function App() {
       desc: "Provenance des Tupuna",
       price: 1000,
       image: "item3.png",
-      panier: false,
+      qte: 11,
     },
     {
       id: 4,
@@ -47,11 +46,36 @@ function App() {
       desc: "Vente à l'unité",
       price: 990,
       image: "item4.png",
-      panier: false,
+      qte: 1,
     },
   ]);
 
   const countProducts = products.length;
+
+  const [qteUpdated, setQteUpdate] = useState(0);
+  const [qtePanierUpdated, setQtePanierUpdate] = useState(0);
+
+  const handleClick = (param) => {
+    setQteUpdate(qteUpdated - 1);
+    setQtePanierUpdate(qtePanierUpdated + 1);
+    const index = products.findIndex((product) => product.id === param.id);
+    const newProduct = {
+      id: param.id,
+      name: param.name,
+      desc: param.desc,
+      price: param.price,
+      image: param.image,
+      qte: --param.qte,
+    };
+
+    const newList = [...products];
+    newList[index] = newProduct;
+    setProducts(newList);
+
+    console.log(products);
+    console.log(qteUpdated);
+    // console.log(products);
+  };
 
   const productsList = products.map((item) => (
     <Card key={item.id}>
@@ -63,20 +87,23 @@ function App() {
         alt={item.image}
       />
       <Card.Body>
-        <Card.Title>{item.name}</Card.Title>
-        <Card.Text>{item.desc}</Card.Text>
-        <Button variant="primary">Ajouter au panier</Button>
+        <Card.Title>
+          <strong>{item.name}</strong>
+        </Card.Title>
+        <Card.Text>
+          <i>{item.desc}</i>
+        </Card.Text>
+        <Button variant="primary" onClick={() => handleClick(item)}>
+          Ajouter au panier
+        </Button>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted mr-auto">
+        <small className="text-muted">
           Prix : <strong>{item.price} XPF</strong>
+          <br />
+          Quantité : <strong>{item.qte}</strong>
         </small>
       </Card.Footer>
-      {/* <p>{item.id}</p>
-      <p>{item.name}</p>
-      <p>{item.desc}</p>
-      <p>{item.image}</p>
-      <p>{item.price}</p> */}
     </Card>
   ));
 
@@ -93,8 +120,7 @@ function App() {
               <Nav.Link href="#home">Accueil</Nav.Link>
               <Nav.Link href="#link">Catalogue</Nav.Link>
               <Nav.Link href="#link">
-                Panier
-                {/* nombre dans le panier  */}
+                Panier <Badge>{qtePanierUpdated}</Badge>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -106,7 +132,7 @@ function App() {
             <h2 className="py-2">Catalogue en ligne</h2>
           </Col>
           <Col sm={4} className="alignR">
-            <p> Total des produits : {countProducts}</p>
+            Total des produits <br /> <strong>{countProducts}</strong>
           </Col>
         </Row>
       </Container>
@@ -116,7 +142,6 @@ function App() {
       {/* <Image src='../public/item1.png' alt="je suis ici" /> */}
       {/* <Image src={image1} alt="je suis ici" /> */}
       {/* <Image src="./image/item1.png" alt="je suis ici" /> */}
-      {/* <p>{products[0].name} </p>[0].image */}
     </div>
   );
 }
