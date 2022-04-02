@@ -10,7 +10,8 @@ import {
   Badge,
   Col,
 } from "react-bootstrap";
-import "./App.css";
+import "../../App.css";
+import useStore from "../../store";
 
 function Catalogue() {
   const [products, setProducts] = useState([]);
@@ -30,11 +31,13 @@ function Catalogue() {
   const countProducts = products.length;
 
   const [qteUpdated, setQteUpdate] = useState(0);
-  const [qtePanierUpdated, setQtePanierUpdate] = useState(0);
+  // const [qtePanierUpdated, setQtePanierUpdate] = useState(0);
+  const increasePanier = useStore((state) => state.increasePanier);
 
   const handleClick = (param) => {
     setQteUpdate(qteUpdated - 1);
-    setQtePanierUpdate(qtePanierUpdated + 1);
+    // setQtePanierUpdate(qtePanierUpdated + 1);
+    increasePanier();
     const index = products.findIndex((product) => product.id === param.id);
     const newProduct = {
       id: param.id,
@@ -89,10 +92,10 @@ function Catalogue() {
       <Container>
         <Row>
           <Col sm={8}>
-            <h2 className="py-2">Catalogue en ligne</h2>
+            <h2 className="py-2">Catalogue</h2>
           </Col>
           <Col sm={4} className="alignR">
-            Total des produits <br /> <strong>{countProducts}</strong>
+            Total des produits : <strong>{countProducts}</strong>
           </Col>
         </Row>
       </Container>

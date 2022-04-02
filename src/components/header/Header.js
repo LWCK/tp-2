@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Nav, Navbar, Container, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useStore from "../../store";
 
 const title = "TP-2 E-Commerce";
 function Header() {
-  const [qtePanierUpdated, setQtePanierUpdate] = useState(0);
+  // const [panierUpdated, setpanierUpdate] = useState(0);
+  const panier = useStore((state) => state.panier);
 
   return (
     <Navbar expand="lg">
@@ -29,7 +31,7 @@ function Header() {
             </Nav.Link>
             <Nav.Link>
               <Link className="navLink" to="/panier">
-                Panier <Badge>{qtePanierUpdated}</Badge>
+                Panier <Badge>{panier}</Badge>
               </Link>
             </Nav.Link>
           </Nav>

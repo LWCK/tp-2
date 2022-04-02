@@ -19,7 +19,7 @@ function App() {
     <>
       <Container>
         <Row>
-          <Col>je suis</Col>
+          <Col>image d'Accueil</Col>
         </Row>
       </Container>
     </>

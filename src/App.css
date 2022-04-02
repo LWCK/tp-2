@@ -1,6 +1,6 @@
-/* .App {
+.panierList {
   text-align: center;
-} */
+}
 
 .img-card{
   width:100%;
@@ -21,3 +21,13 @@
   /* color: blueviolet!important; */
   text-decoration: none;
 }
+
+.imagePanier{
+  width:100%;
+  max-width: 150px;
+  padding: 1em;
+}
+
+td{vertical-align: baseline;
+border-top: 2px solid black ;}
+

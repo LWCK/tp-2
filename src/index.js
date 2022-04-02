@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import Catalogue from "./Catalogue";
-import Panier from "./Panier";
+import Catalogue from "./page/catalogue/Catalogue";
+import Panier from "./page/panier/Panier";
 import Header from "./components/header/Header";
 
 ReactDOM.render(
