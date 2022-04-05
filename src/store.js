@@ -7,6 +7,7 @@ const useStore = create(
     increasePanier: () => set((state) => ({ panier: state.panier + 1 })),
     decreasePanier: () => set((state) => ({ panier: state.panier - 1 })),
     removeAllPanier: () => set((state) => ({ panier: 0 })),
+    id_product: 0,
   }))
 );
 

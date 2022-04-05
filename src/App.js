@@ -1,15 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Button,
-  Nav,
-  Navbar,
-  Container,
-  Card,
-  CardGroup,
-  Row,
-  Badge,
-  Col,
-} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 // import create from "zustand";
 import "./App.css";

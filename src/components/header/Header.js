@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Nav, Navbar, Container, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useStore from "../../store";
