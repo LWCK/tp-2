@@ -13,21 +13,33 @@
 .card {
   text-align: center;
 }
-.alignR{
-  text-align: right;
-}
 
 .topTitle,.navLink{
-  /* color: blueviolet!important; */
+  color: rgb(165, 165, 165)!important;
   text-decoration: none;
+  font-weight: 400px; 
 }
 
 .imagePanier{
   width:100%;
-  max-width: 150px;
-  padding: 1em;
+  max-width: 100px;
+  max-height: 100px;
+  /* padding: 1em; */
 }
 
-td{vertical-align: baseline;
-border-top: 2px solid black ;}
+td{
+  vertical-align: baseline;
+  /* border-bottom: 1px solid black ; */
+}
+.t_right{
+text-align: right;
+}
+.t_left{
+text-align: left;
+}
 
+/* .panierTotal{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+} */

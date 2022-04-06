@@ -62,14 +62,9 @@ function Catalogue() {
 
   const [qteUpdated, setQteUpdate] = useState(0);
 
-  const handleAdd = () => {
-    console.log("choco");
-  };
-
   const handleClick = (param) => {
     setQteUpdate(qteUpdated - 1);
     increasePanier();
-    handleAdd();
     const index = products.findIndex((product) => product.id === param.id);
 
     const newProduct = {
@@ -128,7 +123,7 @@ function Catalogue() {
           <Col sm={8}>
             <h2 className="py-2">Catalogue</h2>
           </Col>
-          <Col sm={4} className="alignR">
+          <Col sm={4} className="t_right">
             Total des produits : <strong>{countProducts}</strong>
           </Col>
         </Row>
@@ -136,7 +131,6 @@ function Catalogue() {
       <Container>
         <CardGroup className="card">{productsList}</CardGroup>
       </Container>
-      <Button onClick={handleAdd}>X</Button>
     </div>
   );
 }

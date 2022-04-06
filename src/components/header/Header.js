@@ -17,7 +17,7 @@ function Header() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="alignR">
+          <Nav className="t_right">
             <Nav.Link>
               <Link className="navLink" to="./">
                 Accueil
@@ -30,7 +30,7 @@ function Header() {
             </Nav.Link>
             <Nav.Link>
               <Link className="navLink" to="/panier">
-                Panier <Badge>{panier}</Badge>
+                Panier <Badge bg="success">{panier}</Badge>
               </Link>
             </Nav.Link>
           </Nav>
